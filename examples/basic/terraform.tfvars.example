@@ -1,0 +1,5 @@
+usecase_name       = "audit-access"
+secret_path        = "secret/data/payments/audit/*"
+capability_read    = true
+capability_list    = true
+capability_create  = false
