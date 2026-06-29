@@ -40,6 +40,21 @@ Use-case.
 - At least one capability must be enabled.
 - This module renders no YAML and only creates policy plus identity group resources.
 
+## No-code provisioning
+
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.0.1`). Click **Provision workspace**, pick a project and workspace name, then complete the form. Capability flags render as checkboxes; at least one must be enabled.
+
+Form fields:
+
+| Field | Required | Notes |
+|---|---|---|
+| `cluster_name` | yes | Cluster identifier |
+| `principal_name` | yes | Principal identifier |
+| `usecase_name` | yes | Use-case identifier |
+| `entity_id` | yes | Principal entity ID |
+| `secret_path` | yes | Vault path expression |
+| `capability_*` | no | Read/list default true; others default false |
+
 ## Registry usage
 
 ```hcl
