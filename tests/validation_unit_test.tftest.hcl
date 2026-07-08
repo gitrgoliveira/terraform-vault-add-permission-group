@@ -12,11 +12,11 @@ run "all_capabilities_false_fails_validation" {
     capability_sudo   = false
     capability_update = false
 
-    cluster_name   = "dev-cluster"
-    entity_id      = "entity-123"
-    principal_name = "apps"
-    secret_path    = "kv/dev-cluster/apps/payments/*"
-    usecase_name   = "payments"
+    cluster_name  = "dev-cluster"
+    entity_id     = "entity-123"
+    secret_path   = "kv/dev-cluster/apps/payments/*"
+    usecase_name  = "payments"
+    workload_name = "apps"
   }
 
   expect_failures = [
@@ -28,11 +28,11 @@ run "invalid_usecase_name_fails_validation" {
   command = plan
 
   variables {
-    cluster_name   = "dev-cluster"
-    entity_id      = "entity-123"
-    principal_name = "apps"
-    secret_path    = "kv/dev-cluster/apps/payments/*"
-    usecase_name   = "INVALID_NAME"
+    cluster_name  = "dev-cluster"
+    entity_id     = "entity-123"
+    secret_path   = "kv/dev-cluster/apps/payments/*"
+    usecase_name  = "INVALID_NAME"
+    workload_name = "apps"
   }
 
   expect_failures = [
@@ -44,13 +44,13 @@ run "injection_in_secret_path_fails_validation" {
   command = plan
 
   variables {
-    cluster_name   = "dev-cluster"
-    entity_id      = "entity-123"
-    principal_name = "apps"
+    cluster_name = "dev-cluster"
+    entity_id    = "entity-123"
     # Breakout chars (quote, brace, space) must be rejected so secret_path
     # cannot terminate the policy path block and inject extra stanzas.
-    secret_path  = "bad\" {x}"
-    usecase_name = "payments"
+    secret_path   = "bad\" {x}"
+    usecase_name  = "payments"
+    workload_name = "apps"
   }
 
   expect_failures = [

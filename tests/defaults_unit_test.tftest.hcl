@@ -4,11 +4,11 @@ run "defaults_plan_succeeds" {
   command = plan
 
   variables {
-    cluster_name   = "dev-cluster"
-    entity_id      = "entity-123"
-    principal_name = "apps"
-    secret_path    = "kv/dev-cluster/apps/payments/*"
-    usecase_name   = "payments"
+    cluster_name  = "dev-cluster"
+    entity_id     = "entity-123"
+    secret_path   = "kv/dev-cluster/apps/payments/*"
+    usecase_name  = "payments"
+    workload_name = "apps"
   }
 
   assert {

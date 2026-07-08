@@ -68,16 +68,6 @@ variable "entity_id" {
   description = "Vault entity ID that receives this custom policy via identity group membership."
 }
 
-variable "principal_name" {
-  type        = string
-  description = "Principal identifier used in policy and group naming."
-
-  validation {
-    condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.principal_name))
-    error_message = "principal_name must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
-  }
-}
-
 variable "secret_path" {
   type        = string
   description = "Vault path expression to grant capabilities on."
@@ -95,5 +85,15 @@ variable "usecase_name" {
   validation {
     condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.usecase_name))
     error_message = "usecase_name must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
+  }
+}
+
+variable "workload_name" {
+  type        = string
+  description = "Workload identifier used in policy and group naming."
+
+  validation {
+    condition     = can(regex("^[a-z][a-z0-9-]{0,30}[a-z0-9]$", var.workload_name))
+    error_message = "workload_name must match ^[a-z][a-z0-9-]{0,30}[a-z0-9]$."
   }
 }

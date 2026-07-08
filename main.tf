@@ -13,8 +13,8 @@ locals {
     var.capability_sudo ? "sudo" : "",
   ])
 
-  group_name  = "${var.cluster_name}-${var.principal_name}-${var.usecase_name}-perm"
-  policy_name = "${var.cluster_name}-${var.principal_name}-${var.usecase_name}-perm-acl"
+  group_name  = "${var.cluster_name}-${var.workload_name}-${var.usecase_name}-perm"
+  policy_name = "${var.cluster_name}-${var.workload_name}-${var.usecase_name}-perm-acl"
 }
 
 resource "vault_policy" "this" {
