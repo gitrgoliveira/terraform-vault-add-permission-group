@@ -17,6 +17,10 @@ locals {
   policy_name = "${var.cluster_name}-${var.workload_name}-${var.usecase_name}-perm-acl"
 }
 
+data "vault_identity_entity" "workload" {
+  entity_name = "${var.cluster_name}-${var.workload_name}"
+}
+
 resource "vault_policy" "this" {
   name = local.policy_name
 
@@ -31,5 +35,5 @@ resource "vault_identity_group" "this" {
   name              = local.group_name
   type              = "internal"
   policies          = [vault_policy.this.name]
-  member_entity_ids = [var.entity_id]
+  member_entity_ids = [data.vault_identity_entity.workload.id]
 }

@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.2.0] - 2026-07-24
+
+### Changed
+- BREAKING: removed the `entity_id` input variable. The module now discovers the workload entity automatically via a `vault_identity_entity` data source using the `cluster_name` and `workload_name` inputs. The workload module must be applied first.
+
 ## [0.1.0] - 2026-07-07
 
 ### Changed

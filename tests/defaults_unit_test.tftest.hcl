@@ -5,7 +5,6 @@ run "defaults_plan_succeeds" {
 
   variables {
     cluster_name  = "dev-cluster"
-    entity_id     = "entity-123"
     secret_path   = "kv/dev-cluster/apps/payments/*"
     usecase_name  = "payments"
     workload_name = "apps"

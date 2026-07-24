@@ -63,11 +63,6 @@ variable "cluster_name" {
   }
 }
 
-variable "entity_id" {
-  type        = string
-  description = "Vault entity ID that receives this custom policy via identity group membership."
-}
-
 variable "secret_path" {
   type        = string
   description = "Vault path expression to grant capabilities on."

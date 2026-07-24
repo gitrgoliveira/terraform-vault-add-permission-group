@@ -8,7 +8,7 @@ Use-case.
 
 ## Prerequisites
 
-- Workload module output `entity_id`
+- The workload module must be applied first so the entity `<cluster_name>-<workload_name>` exists in Vault.
 
 ## Inputs
 
@@ -17,7 +17,6 @@ Use-case.
 | `cluster_name` | `string` | Cluster identifier, regex validated |
 | `workload_name` | `string` | Workload identifier, regex validated |
 | `usecase_name` | `string` | Use-case identifier, regex validated |
-| `entity_id` | `string` | Workload entity ID |
 | `secret_path` | `string` | Vault path expression |
 | `capability_read` | `bool` | Read capability flag, default `true` |
 | `capability_create` | `bool` | Create capability flag, default `false` |
@@ -42,7 +41,7 @@ Use-case.
 
 ## No-code provisioning
 
-This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.1.0`). Click **Provision workspace**, pick a project and workspace name, then complete the form. Capability flags render as checkboxes; at least one must be enabled.
+This module is no-code enabled in the `hc-ric-demo` private registry (pinned to `0.2.0`). Click **Provision workspace**, pick a project and workspace name, then complete the form. Capability flags render as checkboxes; at least one must be enabled.
 
 Form fields:
 
@@ -51,7 +50,6 @@ Form fields:
 | `cluster_name` | yes | Cluster identifier |
 | `workload_name` | yes | Workload identifier |
 | `usecase_name` | yes | Use-case identifier |
-| `entity_id` | yes | Workload entity ID |
 | `secret_path` | yes | Vault path expression |
 | `capability_*` | no | Read/list default true; others default false |
 
@@ -60,12 +58,11 @@ Form fields:
 ```hcl
 module "add_permission_group" {
   source  = "app.terraform.io/<org>/add-permission-group/vault"
-  version = "~> 0.1.0"
+  version = "~> 0.2.0"
 
   cluster_name      = "ocp-prod-eu"
   workload_name     = "payments"
   usecase_name      = "audit-access"
-  entity_id         = "11111111-2222-3333-4444-555555555555"
   secret_path       = "secret/data/payments/audit/*"
   capability_read   = true
   capability_list   = true

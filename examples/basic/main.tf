@@ -4,7 +4,6 @@ terraform {
 
 locals {
   workload_cluster_name = "ocp-prod-eu"
-  workload_entity_id    = "11111111-2222-3333-4444-555555555555"
   workload_name         = "payments"
 }
 
@@ -15,7 +14,6 @@ module "add_permission_group" {
   capability_list   = var.capability_list
   capability_read   = var.capability_read
   cluster_name      = local.workload_cluster_name
-  entity_id         = local.workload_entity_id
   secret_path       = var.secret_path
   usecase_name      = var.usecase_name
   workload_name     = local.workload_name
