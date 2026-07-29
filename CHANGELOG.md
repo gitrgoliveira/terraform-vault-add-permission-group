@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-07-29
+
+### Added
+
+- Validation rejecting `capability_sudo = true` when `secret_path` starts with `sys/` or `auth/`.
+
+### Changed
+
+- README warns that sudo overrides deny policies and requires out-of-band approval; removed a duplicated sentence.
+
 ## [0.2.0] - 2026-07-24
 
 ### Changed
