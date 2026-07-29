@@ -24,7 +24,9 @@ Use-case.
 | `capability_delete` | `bool` | Delete capability flag, default `false` |
 | `capability_list` | `bool` | List capability flag, default `true` |
 | `capability_patch` | `bool` | Patch capability flag, default `false` |
-| `capability_sudo` | `bool` | Sudo capability flag, default `false` |
+| `capability_sudo` | `bool` | Sudo capability flag, default `false`. See warning under the table. |
+
+> **Warning — `capability_sudo`:** sudo overrides deny policies and is the only way to reach root-protected Vault paths (seal, rekey, audit devices). The module rejects `capability_sudo = true` when `secret_path` starts with `sys/` or `auth/`; even on other paths, never combine it with broad wildcards, and require out-of-band platform-team approval before granting it through a self-service flow.
 
 ## Outputs
 
@@ -69,5 +71,3 @@ module "add_permission_group" {
   capability_create = false
 }
 ```
-
-This module renders no YAML. It only creates policy and group resources.

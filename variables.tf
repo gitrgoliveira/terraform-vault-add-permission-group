@@ -45,6 +45,11 @@ variable "capability_sudo" {
   type        = bool
   description = "Whether to grant sudo capability."
   default     = false
+
+  validation {
+    condition     = !(var.capability_sudo && can(regex("^(sys/|auth/)", var.secret_path)))
+    error_message = "capability_sudo must not be combined with sys/ or auth/ paths; request elevated access through the platform team."
+  }
 }
 
 variable "capability_update" {
