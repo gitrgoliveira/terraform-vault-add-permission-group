@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.1] - 2026-11-13
+
+### Changed
+
+- Documentation only: The README's no-code registry pin and usage version constraint now point at the published release (they still named 0.2.0).
+
 ## [0.3.0] - 2026-07-29
 
 ### Added
